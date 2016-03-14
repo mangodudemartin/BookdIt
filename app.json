@@ -1,0 +1,8 @@
+{
+  "name": "bookdit",
+  "description": "",
+  "image": "heroku/python",
+  "repository": "https://github.com/mangodudemartin/bookdit.git",
+  "keywords": ["python", "django" ],
+  "addons": [ "heroku-postgresql" ]
+}
