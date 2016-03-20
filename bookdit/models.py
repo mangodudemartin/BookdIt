@@ -1,7 +1,7 @@
 from django.db import models
 
     
-#Vendors - Handles vendor information
+# Vendors - Handles vendor information
 class Vendor(models.Model):
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=4000)
@@ -10,7 +10,7 @@ class Vendor(models.Model):
         return self.name
     
 
-#Users - Handles user's information
+# Users - Handles user's information
 class User(models.Model):
     username = models.CharField(max_length=255)
     firstName = models.CharField(max_length=255)

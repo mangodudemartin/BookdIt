@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
-from django.contrib.auth import *
+from django.contrib.auth import login, logout, authenticate
 from bookdit.models import *
 
 #----------------------------------------------------------------------------------------
@@ -30,7 +30,7 @@ def login(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                #return render(request, 'bookdit/home/index.html', {})
+                # return render(request, 'bookdit/home/index.html', {})
                 index(request)
         
         

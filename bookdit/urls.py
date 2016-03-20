@@ -8,8 +8,8 @@ urlpatterns = [
     # /
     url(r'^$', homeController.index, name='index'),
     
-    #login/
+    # login/
     url(r'^login/$', homeController.login, name='login'),
-    #logout_view/
+    # logout_view/
     url(r'^logout_view/$', homeController.logout_view, name='logout_view'),
 ]
