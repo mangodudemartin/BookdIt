@@ -9,7 +9,7 @@ urlpatterns = [
     url(r'^$', homeController.index, name='index'),
     
     # login/
-    url(r'^login/$', homeController.login, name='login'),
+    url(r'^login_request/$', homeController.login_request, name='login_request'),
     # logout_view/
     url(r'^logout_view/$', homeController.logout_view, name='logout_view'),
 ]

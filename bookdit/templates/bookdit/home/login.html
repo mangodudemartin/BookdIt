@@ -7,7 +7,7 @@
 	{% endif %}
 	
 	<!-- Login form -->
-	<form action="{% url 'bookdit:login' %}" method="post">
+	<form action="{% url 'bookdit:login_request' %}" method="post">
 		{% csrf_token %}
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 			<input class="mdl-textfield__input" type="text" id="login_username" name="login_username">
