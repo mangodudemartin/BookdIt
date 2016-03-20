@@ -5,8 +5,12 @@ from .models import *
 
 
 def index(request):
-    vendor_list = Vendor.objects.all()
-    context = {
-               'vendor_list' : vendor_list
-               }
+    if request.user.is_authenticated():
+        context = {
+            'current_username': user.username
+        }
+    else :
+        contect = {
+            'current_username': ''
+        }
     return render(request, 'bookdit/index.html', context)
