@@ -36,12 +36,14 @@
 		      <nav class="mdl-navigation mdl-layout--large-screen-only">
 		        <a class="mdl-navigation__link" href="">
                     {% if request.user.is_authenticated %}
-                        <form action="{% url 'bookdit:logout_view' %}" method="POST">
+                        <form action="{% url 'bookdit:logout_request' %}" method="POST">
                             {% csrf_token %}
                             <button class="mdl-button mdl-js-button mdl-button--primary">
                                 Logout
                             </button>
                         </form>
+                    {% else %}
+                        
                     {% endif %}
                 </a>
 		      </nav>

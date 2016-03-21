@@ -1,15 +1,5 @@
 {% extends "bookdit/_layout.html" %}
 
 {% block content %}
-{% if login_return_message %}
-	<p>{{ login_return_message }}</p>
-{% endif %}
 
-<p>welcome {{ current_username }}!</p>
-<form action="{% url 'bookdit:logout_view' %}" method="POST">
-	{% csrf_token %}
-	<button class="mdl-button mdl-js-button mdl-button--primary">
-		Logout
-	</button>
-</form>
 {% endblock %}
