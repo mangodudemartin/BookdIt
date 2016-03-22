@@ -1,6 +1,4 @@
 from django.conf.urls import url
-
-from . import views
 from bookdit.controllers import homeController, authController
 
 app_name = 'bookdit'
