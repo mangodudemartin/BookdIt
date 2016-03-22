@@ -38,9 +38,9 @@
                     {% if request.user.is_authenticated %}
                         <form action="{% url 'bookdit:logout_request' %}" method="POST">
                             {% csrf_token %}
-                            <button class="mdl-button mdl-js-button mdl-button--primary">
-                                Logout
-                            </button>
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+				Logout
+			    </button>
                         </form>
                     {% else %}
                         
