@@ -2,7 +2,18 @@
 
 {% block content %}
   <!-- MapBox via Leaflet -->
-  <div id="map_main"></div>
+  <div id="map_main"></div> 
+  
+  
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell-1-col">
+        
+         
+    </div>    
+  </div>
+
+
+  
   
   
 {% endblock %}
@@ -11,13 +22,18 @@
 <!-- INJECT SCRIPTS INTO LAYOUT -->
 {% block scripts %}
   <script type="text/javascript">
-    var mymap = L.map('map_main').setView([51.505, -0.09], 13);
-    
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    //attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox.satellite',
-    accessToken: 'pk.eyJ1IjoibWFuZ29kdWRlbWFydGluIiwiYSI6ImNpa2x1N2JyMjBscGN0aWo3bXJwZzBqOWYifQ.9liaTsDWxl8wrA0x80njtg'
-}).addTo(mymap);
+    $(function() {
+      var mymap = L.map('map_main').setView([0, 0], 5);
+      
+      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        //attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mangodudemartin.p594li8c',
+        accessToken: 'pk.eyJ1IjoibWFuZ29kdWRlbWFydGluIiwiYSI6ImNpa2x1N2JyMjBscGN0aWo3bXJwZzBqOWYifQ.9liaTsDWxl8wrA0x80njtg'
+      }).addTo(mymap);
+      
+      var marker = L.marker([2, 2]).addTo(mymap);
+      marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+    })
   </script>
 {% endblock %}
