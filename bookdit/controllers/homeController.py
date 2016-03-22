@@ -14,19 +14,5 @@ from bookdit.models import *
 def index(request):
     #import pdb; pdb.set_trace()
     context = {
-        'current_username': request.user.username
     }
     return render(request, 'bookdit/home/index.html', context)
-
-
-
-
-
-
-
-
-
-
-
-
-
