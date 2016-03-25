@@ -1,15 +1,37 @@
 {% extends "bookdit/_layout.html" %}
 
 {% block content %}
-  <!-- MapBox via Leaflet -->
-  <div id="map_main"></div> 
+  
   
   
   <div class="mdl-grid">
-    <div class="mdl-cell mdl-cell-1-col">
-        
-         
-    </div>    
+    <!-- Search Bar -->
+    <div class="mdl-cell mdl-cell--9-col">
+      <input type="text" class="form-control" placeholder="Search Vendor, Service, Location, or Keywords">        
+    </div>
+    <div class="mdl-cell mdl-cell--1-col">
+      <button class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">search</i>
+      </button>
+    </div>
+    <div class="mdl-cell mdl-cell--2-col"></div>
+
+    
+    <!-- MapBox via Leaflet -->
+    <div class="mdl-cell mdl-cell--10-col">
+        <div id="map_main"></div> 
+    </div>
+
+    
+    <!-- RIGHT-HAND Advertisement -->
+    <div class="mdl-cell mdl-cell--2-col">
+      Ad Here
+    </div>
+    
+    <!-- BOTTOM Advertisement -->
+    <div class="mdl-cell mdl-cell--12-col">
+      Ad Here
+    </div>
   </div>
 
 
