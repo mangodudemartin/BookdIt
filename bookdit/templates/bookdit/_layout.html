@@ -38,7 +38,7 @@
           <nav class="mdl-navigation mdl-layout--large-screen-only">
             <a class="mdl-navigation__link" href="">
               {% if request.user.is_authenticated %}
-                <form action="{% url 'bookdit:logout_request' %}" method="POST">
+                <form action="{% url 'logout_request' %}" method="POST">
                   {% csrf_token %}
                   <button class="mdl-button mdl-js-button">
                     Logout {{ request.user.username }}
@@ -50,14 +50,14 @@
         </div>
       </header>
       
-      <div class="mdl-layout__drawer mdl-layout--small-screen-only">
+      <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">Bookdit</span>
         <nav class="mdl-navigation">
           <a class="mdl-navigation__link" href="">Favorites</a>
           <a class="mdl-navigation__link" href="">My Account</a>
           <a class="mdl-navigation__link" href="">
           {% if request.user.is_authenticated %}
-              <form action="{% url 'bookdit:logout_request' %}" method="POST">
+              <form action="{% url 'logout_request' %}" method="POST">
                 {% csrf_token %}
                 <button class="mdl-button mdl-js-button">
                   Logout {{ request.user.username }}

@@ -1,10 +1,12 @@
 from django.conf.urls import url
+from django.contrib import admin
 from bookdit.controllers import homeController, authController
 
 app_name = 'bookdit'
 urlpatterns = [
     # /
     url(r'^$', homeController.index, name='index'),
+    url(r'^admin/', admin.site.urls),
     
     
     #-------------------------------------------------------------------------------------------------------------
