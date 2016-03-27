@@ -1,21 +1,45 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.utils import timezone
 
+
+# Users - Extends the Django User class with additional information
+class userextend(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE) #join to the Django model
+    vendor = models.ForeignKey('vendor', related_name='user2vendor', default=1)
+    
+    def __str__(self):
+        return self.username + "  (" + self.lastName + ", " + self.firstName + ")"
+    
     
 # Vendors - Handles vendor information
-class Vendor(models.Model):
-    name = models.CharField(max_length=255)
-    description = models.CharField(max_length=4000)
+class vendor(models.Model):
+    name = models.CharField(max_length=255, default='__default')
+    description = models.CharField(max_length=4000, default='__default')
+    isActive = models.BooleanField(default=True)
+    
+    def __str__(self):
+        return self.name
+
+
+# Services - Handles Services that Vendors offer
+class service(models.Model):
+    name = models.CharField(max_length=255, default='__default')
+    description = models.CharField(max_length=4000, default='__default')
+    supplier = models.ForeignKey(User, related_name='service2user_supplier')
+    isActive = models.BooleanField(default=True)
     
     def __str__(self):
         return self.name
     
 
-# Users - Handles user's information
-class User(models.Model):
-    username = models.CharField(max_length=255)
-    firstName = models.CharField(max_length=255)
-    lastName = models.CharField(max_length=255)
+# Appointments - Handles the scheduling of appointments for Services
+class appointment(models.Model):
+    timestart = models.DateTimeField(default=timezone.now())
+    timeend = models.DateTimeField(default=timezone.now())
+    service = models.ForeignKey('service', related_name='appointment2service')
+    supplier = models.ForeignKey(User, related_name='appointment2user_supplier')
+    customer = models.ForeignKey(User, related_name='appointment2user_customer')
     
     def __str__(self):
-        return self.username + "  (" + self.lastName + ", " + self.firstName + ")"
-    
+        return self.timestart
