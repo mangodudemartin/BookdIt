@@ -30,7 +30,7 @@ def login_request(request):
             if user.is_active:
                 login(request, user)
                 #return render(request, 'bookdit/home/index.html', {})
-                return HttpResponseRedirect(reverse('bookdit:index'))
+                return HttpResponseRedirect(reverse('index'))
         
         
     except:
@@ -46,6 +46,6 @@ def login_request(request):
 # PROCESS LOGOUT REQUEST
 def logout_request(request):
     logout(request)
-    return HttpResponseRedirect(reverse('bookdit:index'))
+    return HttpResponseRedirect(reverse('index'))
 
 
