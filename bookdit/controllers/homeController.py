@@ -10,7 +10,7 @@ from bookdit.models import *
 #----------------------------------------------------------------------------------------
 #    LOAD THE MAIN HOME VIEW
 #----------------------------------------------------------------------------------------
-@login_required(login_url='bookdit:vlogin')
+@login_required(login_url='vlogin')
 def index(request):
     #import pdb; pdb.set_trace()
     context = {
