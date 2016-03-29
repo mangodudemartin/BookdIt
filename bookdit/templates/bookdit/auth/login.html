@@ -1,0 +1,58 @@
+{% extends "bookdit/_layout.html" %}
+
+{% block content %}
+<div class="mdl-grid">
+	<div class="mdl-cell mdl-cell--12-col">
+		<!-- Show error if there is one -->
+		{% if error_message %}
+			<p>{{error_message}}</p>
+		{% else %}
+			<p>Please login to BookdIt:</p>
+		{% endif %}
+	</div>
+	
+	<!-- Login form -->
+	<form method="post">
+	{% csrf_token %}
+		<div class="mdl-grid">
+			<div class="mdl-cell mdl-cell--12-col">
+			
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					<input class="mdl-textfield__input" type="text" id="login_username" name="login_username">
+					<label class="mdl-textfield__label" for="login_username">Username</label>
+				</div>
+			</div>
+			
+			<div class="mdl-cell mdl-cell--12-col">
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					<input class="mdl-textfield__input" type="text" id="login_password" name="login_password">
+					<label class="mdl-textfield__label" for="login_password">Password</label>
+				</div>
+			</div>
+			
+			<div class="mdl-cell mdl-cell--12-col">
+				<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="login_rememberme">
+					<input type="checkbox" id="login_rememberme" name="login_rememberme" class="mdl-checkbox__input">
+					<span class="mdl-checkbox__label">Remeber Me?</span>
+				</label>
+			</div>
+			
+			<div class="mdl-cell mdl-cell--12-col">
+				<button formaction="{% url 'login_request' %}" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+					Login
+				</button>
+				<button formaction="{% url 'register' %}" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+					Register
+				</button>
+			</div>
+			
+		</div>
+	</form>
+
+</div>
+
+
+	
+	
+	
+{% endblock %}
