@@ -21,7 +21,9 @@
 .no-margin {
 	margin:0;
 }
-
+.white {
+	color:#FFFFFF;
+}
 
 /* MDL Overrides */
 .mdl-cell {

@@ -8,11 +8,23 @@ from bookdit.models import *
 
 
 #----------------------------------------------------------------------------------------
+#    LOAD THE MAIN PUBLIC VIEW
+#----------------------------------------------------------------------------------------
+def index(request):
+    #import pdb; pdb.set_trace()
+    context = {}
+    if request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('home'))
+    else:
+        return render(request, 'bookdit/home/index.html', context)
+        
+
+
+#----------------------------------------------------------------------------------------
 #    LOAD THE MAIN HOME VIEW
 #----------------------------------------------------------------------------------------
 @login_required(login_url='vlogin')
-def index(request):
-    #import pdb; pdb.set_trace()
-    context = {
-    }
-    return render(request, 'bookdit/home/index.html', context)
+def home(request):
+    contect = {}
+    return render(request, 'bookdit/home/home.html')
+    

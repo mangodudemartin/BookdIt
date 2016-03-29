@@ -10,9 +10,13 @@ from bookdit.models import *
 #----------------------------------------------------------------------------------------
 #    USER AUTHENTICATION
 #----------------------------------------------------------------------------------------
+#REGISTRATION VIEW
+def register(request):
+    return render(request, 'bookdit/auth/register.html', {})
+
 #LOGIN VIEW
 def vlogin(request):
-    return render(request, 'bookdit/home/login.html', {})
+    return render(request, 'bookdit/auth/login.html', {})
 
 
 # PROCESS LOGIN REQUEST
@@ -20,26 +24,28 @@ def login_request(request):
     try:    
         username = request.POST['login_username']
         password = request.POST['login_password']
-        print('username:',username)
-        print('password:',password)
+        remember = request.POST.get('login_rememberme', 'off')
         
         user = authenticate(username=username, password=password)
-        print('user.is_active:',user.is_active)
         
         if user is not None:
             if user.is_active:
+                if remember == 'on':
+                    request.session.set_expiry(2592000)
+                else :
+                    request.session.set_expiry(0)
+                    
                 login(request, user)
-                #return render(request, 'bookdit/home/index.html', {})
                 return HttpResponseRedirect(reverse('index'))
         
         
     except:
-        return render(request, 'bookdit/home/login.html', {
-            'error_message': 'Incorrect Username and/or Password'
+        return render(request, 'bookdit/auth/login.html', {
+            'error_message': '#ERROR'
         })
     else:
-        return render(request, 'bookdit/home/login.html', {
-            'error_message': "OH! Busted!"
+        return render(request, 'bookdit/auth/login.html', {
+            'error_message': "Incorrect Username and/or Password"
         })        
 
 

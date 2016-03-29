@@ -6,12 +6,14 @@ app_name = 'bookdit'
 urlpatterns = [
     # /
     url(r'^$', homeController.index, name='index'),
+    url(r'^home/', homeController.home, name='home'),
     url(r'^admin/', admin.site.urls),
     
     
     #-------------------------------------------------------------------------------------------------------------
     # AUTHENTICATION URLS
     #-------------------------------------------------------------------------------------------------------------
+    url(r'^register/$', authController.register, name='register'),
     url(r'^login/$', authController.vlogin, name='vlogin' ),
     # login/
     url(r'^login_request/$', authController.login_request, name='login_request'),

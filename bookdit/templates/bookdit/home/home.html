@@ -1,0 +1,60 @@
+{% extends "bookdit/_layout.html" %}
+
+{% block content %}
+	
+	
+	
+	<div class="mdl-grid">
+		<!-- Search Bar -->
+		<div class="mdl-cell mdl-cell--9-col-desktop mdl-cell--3-col-phone">
+			<input type="text" class="form-control" placeholder="Search Vendor, Service, Location, or Keywords">        
+		</div>
+		
+		<div class="mdl-cell mdl-cell--1-col-desktop mdl-cell--1-col-phone">
+			<button class="mdl-button mdl-js-button mdl-button--icon">
+				<i class="material-icons">search</i>
+			</button>
+		</div>
+		
+		<!-- MapBox via Leaflet -->
+		<div class="mdl-cell mdl-cell--10-col">
+				<div id="map_main"></div> 
+		</div>
+
+		
+		<!-- RIGHT-HAND Advertisement -->
+		<div class="mdl-cell mdl-cell--2-col mdl-layout--large-screen-only">
+			Ad Here
+		</div>
+		
+		<!-- BOTTOM Advertisement -->
+		<div class="mdl-cell mdl-cell--12-col mdl-layout--small-screen-only">
+			Ad Here
+		</div>
+	</div>
+
+
+	
+	
+	
+{% endblock %}
+
+
+<!-- INJECT SCRIPTS INTO LAYOUT -->
+{% block scripts %}
+	<script type="text/javascript">
+		$(function() {
+			var mymap = L.map('map_main').setView([0, 0], 5);
+			
+			L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+				//attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+				maxZoom: 18,
+				id: 'mangodudemartin.p594li8c',
+				accessToken: 'pk.eyJ1IjoibWFuZ29kdWRlbWFydGluIiwiYSI6ImNpa2x1N2JyMjBscGN0aWo3bXJwZzBqOWYifQ.9liaTsDWxl8wrA0x80njtg'
+			}).addTo(mymap);
+			
+			var marker = L.marker([2, 2]).addTo(mymap);
+			marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+		})
+	</script>
+{% endblock %}
