@@ -6,7 +6,8 @@ from django.utils import timezone
 # Users - Extends the Django User class with additional information
 class userprofile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE) #join to the Django model
-    vendor = models.ForeignKey('vendor', related_name='user2vendor', default=1, null=True, blank=True)
+    vendor = models.ForeignKey('vendor', related_name='user2vendor', default=None, null=True, blank=True)
+
     
 # Vendors - Handles vendor information
 class vendor(models.Model):

@@ -14,9 +14,8 @@ urlpatterns = [
     # AUTHENTICATION URLS
     #-------------------------------------------------------------------------------------------------------------
     url(r'^register/$', authController.register, name='register'),
+    url(r'^register_request/$', authController.register_request, name='register_request'),
     url(r'^login/$', authController.vlogin, name='vlogin' ),
-    # login/
     url(r'^login_request/$', authController.login_request, name='login_request'),
-    # logout_view/
     url(r'^logout_request/$', authController.logout_request, name='logout_request'),
 ]
